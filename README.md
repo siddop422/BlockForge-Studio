@@ -138,3 +138,20 @@ BlockForge Studio is distributed under the [Apache License 2.0](./LICENSE). See 
 ---
 
 **Made for learning, experimenting, and making Python more visual.**
+
+## Optional local Python runner
+
+The visual editor and Python export work offline in a browser without a build step. To run generated programs from the editor, use the optional local runner:
+
+1. Install Python 3.9 or newer.
+2. Keep runner.py in the same folder as blockforge_studio.html.
+3. Run python runner.py in a terminal.
+4. Open http://127.0.0.1:8765 in your browser and use the **Run** button.
+
+The runner uses Python's standard library only. It limits request/source/output sizes, runs with a timeout, and uses a temporary working directory. **It is not a security sandbox:** executed programs run with your user permissions and may access your files or network. Only run code you trust, and do not expose the runner to the internet. The editor remains usable by opening the HTML file directly if you do not need execution.
+
+## V2 feature status
+
+Implemented in the development branch: searchable block palette, starter examples, local draft recovery, versioned project files with import checks, generated Python preview/export, undo/redo, block nesting/reordering, workspace zoom, and optional localhost execution. This is still a development build, not a stable release. Multi-project management, full bidirectional Python-to-block conversion, exhaustive cross-browser QA, and operating-system-level sandboxing are not implemented.
+
+See [Quick Start](./QUICKSTART.md), [Contributing](./CONTRIBUTING.md), and [Changelog](./CHANGELOG.md).
