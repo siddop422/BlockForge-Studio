@@ -23,7 +23,7 @@ assert.doesNotMatch(html, /https?:\/\/(?:unpkg\.com|cdnjs\.cloudflare\.com|cdn\.
 const defsStart = html.indexOf('const DEFS = {');
 const defsEnd = html.indexOf('const CATEGORY_BLOCKS', defsStart);
 const defsSource = html.slice(defsStart, defsEnd);
-const blockTypes = [...defsSource.matchAll(/^\\s*([A-Za-z_]\\w*):\\{cat:/gm)].map((match) => match[1]);
+const blockTypes = [...defsSource.matchAll(/^\s*([A-Za-z_]\w*):\{cat:/gm)].map((match) => match[1]);
 const generatorStart = html.indexOf('function generate()');
 const generatorEnd = html.indexOf('function updateCode()', generatorStart);
 const generatorSource = html.slice(generatorStart, generatorEnd);
