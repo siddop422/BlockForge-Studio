@@ -6,6 +6,18 @@ BlockForge Studio is a browser-based visual programming editor inspired by block
 
 > **Status:** Early project / work in progress. Feedback, bug reports, and feature ideas are welcome.
 
+## 🚧 Block Forge V2 development
+
+The `v2-development` branch adds a focused set of improvements while keeping the app as a single, offline-friendly HTML file:
+
+- **Searchable block palette** — filter blocks in the selected category by name, description, or type.
+- **Starter examples** — load Hello World, Calculator, Number Guessing Game, or a Python game starter.
+- **Local draft autosave** — the editor can recover the last draft from this browser using local storage. Drafts stay in this browser and are not uploaded.
+- **Safer project import** — validates the project format/version, rejects duplicate block IDs, fills missing fields from block defaults, and limits imports to 5 MB and 100 nested levels.
+- **Versioned project format** — new exports use format version 2 while version 1 projects remain importable.
+
+V2 is still under development. These changes are being prepared on a separate branch; review the branch and test the workflows before treating it as a stable release. The editor generates Python source and exports it; it does **not** execute Python inside the browser.
+
 ## ✨ Features
 
 - **Visual block workspace** — drag blocks from the palette, reorder them, and nest them inside control-flow blocks.
@@ -126,3 +138,20 @@ BlockForge Studio is distributed under the [Apache License 2.0](./LICENSE). See 
 ---
 
 **Made for learning, experimenting, and making Python more visual.**
+
+## Optional local Python runner
+
+The visual editor and Python export work offline in a browser without a build step. To run generated programs from the editor, use the optional local runner:
+
+1. Install Python 3.9 or newer.
+2. Keep runner.py in the same folder as blockforge_studio.html.
+3. Run python runner.py in a terminal.
+4. Open http://127.0.0.1:8765 in your browser and use the **Run** button.
+
+The runner uses Python's standard library only. It limits request/source/output sizes, runs with a timeout, and uses a temporary working directory. **It is not a security sandbox:** executed programs run with your user permissions and may access your files or network. Only run code you trust, and do not expose the runner to the internet. The editor remains usable by opening the HTML file directly if you do not need execution.
+
+## V2 feature status
+
+Implemented in the development branch: searchable block palette, starter examples, local draft recovery, versioned project files with import checks, generated Python preview/export, undo/redo, block nesting/reordering, workspace zoom, and optional localhost execution. This is still a development build, not a stable release. Multi-project management, full bidirectional Python-to-block conversion, exhaustive cross-browser QA, and operating-system-level sandboxing are not implemented.
+
+See [Quick Start](./QUICKSTART.md), [Contributing](./CONTRIBUTING.md), and [Changelog](./CHANGELOG.md).

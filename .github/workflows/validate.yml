@@ -1,0 +1,26 @@
+name: Validate BlockForge
+
+on:
+  push:
+    branches: [main, v2-development]
+  pull_request:
+    branches: [main]
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate single-file editor JavaScript and features
+        run: node scripts/check-html.mjs
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test local Python runner
+        run: python -m unittest discover -s tests -v
