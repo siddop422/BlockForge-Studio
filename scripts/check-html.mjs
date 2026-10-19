@@ -3,15 +3,25 @@ import assert from 'node:assert/strict';
 
 const html = readFileSync(new URL('../blockforge_studio.html', import.meta.url), 'utf8');
 assert.match(html, /<title>BlockForge Studio/);
-assert.match(html, /id="paletteSearch"/, 'block palette search input exists');
-assert.match(html, /id="examplesBtn"/, 'examples button exists');
+for (const [id, label] of [
+  ['paletteSearch', 'searchable block palette'],
+  ['examplesBtn', 'starter examples'],
+  ['runBtn', 'Python run control'],
+  ['runOutput', 'program output panel'],
+  ['zoomInBtn', 'workspace zoom controls'],
+  ['codePreview', 'generated code preview'],
+]) {
+  assert.match(html, new RegExp('id="' + id + '"'), label + ' exists');
+}
 assert.match(html, /blockforge-v2-draft/, 'browser-local autosave key exists');
 assert.match(html, /version:2/, 'new projects use version 2');
 assert.match(html, /5\*1024\*1024/, 'project import size limit exists');
 assert.match(html, /seen\.has\(b\.id\)/, 'duplicate block IDs are rejected');
+assert.match(html, /fetch\('\/api\/run'/, 'run button calls the local runner API');
+assert.doesNotMatch(html, /https?:\/\/(?:unpkg\.com|cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net)/, 'editor must not require common external CDNs');
 
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/gi)];
 assert.equal(scripts.length, 1, 'the single-file editor should contain one inline script');
-new Function(scripts[0][1]); // Parse only; do not execute the application in CI.
+new Function(scripts[0][1]); // Parse only; do not execute the browser application in CI.
 
 console.log('BlockForge static checks passed.');
