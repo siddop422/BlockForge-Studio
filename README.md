@@ -16,7 +16,7 @@ The `v2-development` branch adds a focused set of improvements while keeping the
 - **Safer project import** — validates the project format/version, rejects duplicate block IDs, fills missing fields from block defaults, and limits imports to 5 MB and 100 nested levels.
 - **Versioned project format** — new exports use format version 2 while version 1 projects remain importable.
 
-V2 is still under development. These changes are being prepared on a separate branch; review the branch and test the workflows before treating it as a stable release. The editor generates Python source and exports it; it does **not** execute Python inside the browser.
+V2 is still under development. These changes are being prepared on a separate branch; review the branch and test the workflows before treating it as a stable release. The editor generates Python source and exports it; the optional local runner executes it in a separate Python process on your computer, not inside the browser.
 
 ## ✨ Features
 
@@ -24,7 +24,11 @@ V2 is still under development. These changes are being prepared on a separate br
 - **Python code preview** — inspect the generated source as you build.
 - **Export Python** — download your program as a .py file.
 - **Save and reopen projects** — export an editable .bforge project and open it again later.
-- **Useful block categories** — Events, Output & Input, Variables, Control, Logic, Math & Python, Lists & Data, Functions, and Any Python.
+- **Python block categories** — Events, Input/Output, Variables, Control, Exceptions, Math, Lists, Data types, Operators, Strings, Dictionaries, Files, Classes, Functions, and Any Python.
+- **Workspace controls** — zoom in/out/reset, plus native scrolling for workspace navigation.
+- **Block shortcuts** — undo/redo, copy/cut/paste, duplicate, delete, save, and export.
+- **Beginner onboarding** — a first-run guide with an option to load a Hello World example.
+- **Optional local execution** — run generated code using the standard-library runner on localhost; execution is not sandboxed.
 - **Edit block values** — select a block to configure its inputs in the Inspector.
 - **Undo and redo** — recover from recent editing mistakes.
 - **Keyboard shortcuts** — use familiar shortcuts for common actions.
