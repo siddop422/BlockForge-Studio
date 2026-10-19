@@ -6,6 +6,18 @@ BlockForge Studio is a browser-based visual programming editor inspired by block
 
 > **Status:** Early project / work in progress. Feedback, bug reports, and feature ideas are welcome.
 
+## 🚧 Block Forge V2 development
+
+The `v2-development` branch adds a focused set of improvements while keeping the app as a single, offline-friendly HTML file:
+
+- **Searchable block palette** — filter blocks in the selected category by name, description, or type.
+- **Starter examples** — load Hello World, Calculator, Number Guessing Game, or a Python game starter.
+- **Local draft autosave** — the editor can recover the last draft from this browser using local storage. Drafts stay in this browser and are not uploaded.
+- **Safer project import** — validates the project format/version, rejects duplicate block IDs, fills missing fields from block defaults, and limits imports to 5 MB and 100 nested levels.
+- **Versioned project format** — new exports use format version 2 while version 1 projects remain importable.
+
+V2 is still under development. These changes are being prepared on a separate branch; review the branch and test the workflows before treating it as a stable release. The editor generates Python source and exports it; it does **not** execute Python inside the browser.
+
 ## ✨ Features
 
 - **Visual block workspace** — drag blocks from the palette, reorder them, and nest them inside control-flow blocks.
